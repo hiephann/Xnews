@@ -1,0 +1,423 @@
+lib/
+├── app/   ← TV1
+│   ├── providers/
+│   │   └── app_providers.dart
+│   ├── router/
+│   │   ├── app_router.dart
+│   │   ├── main_shell.dart
+│   │   └── route_names.dart
+│   ├── theme/
+│   │   ├── app_colors.dart
+│   │   ├── app_spacing.dart
+│   │   ├── app_text_styles.dart
+│   │   └── app_theme.dart
+│   └── app.dart
+├── core/   ← TV1
+│   ├── constants/
+│   │   ├── api_constants.dart
+│   │   ├── app_constants.dart
+│   │   ├── app_messages.dart
+│   │   └── storage_keys.dart
+│   ├── errors/
+│   │   ├── app_exception.dart
+│   │   └── failure.dart
+│   ├── network/
+│   │   ├── auth_interceptor.dart
+│   │   └── dio_client.dart
+│   ├── storage/
+│   │   ├── prefs_service.dart
+│   │   └── secure_storage_service.dart
+│   ├── utils/
+│   │   ├── date_formatter.dart
+│   │   ├── logger.dart
+│   │   ├── number_formatter.dart
+│   │   └── validators.dart
+│   └── widgets/
+│       ├── app_button.dart
+│       ├── app_empty.dart
+│       ├── app_error.dart
+│       ├── app_loading.dart
+│       ├── app_text_field.dart
+│       ├── article_card.dart
+│       ├── confirm_dialog.dart
+│       ├── paged_list_view.dart
+│       └── status_chip.dart
+├── features/
+│   ├── account_management/   ← TV1 · UC06
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── account_management_remote_datasource.dart
+│   │   │   └── repositories/
+│   │   │       └── account_management_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── repositories/
+│   │   │   │   └── account_management_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── change_role.dart
+│   │   │       ├── create_account.dart
+│   │   │       ├── get_accounts.dart
+│   │   │       └── set_account_status.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   ├── account_list_provider.dart
+│   │       │   └── create_account_provider.dart
+│   │       ├── screens/
+│   │       │   ├── account_list_screen.dart
+│   │       │   └── create_account_screen.dart
+│   │       └── widgets/
+│   │           ├── account_tile.dart
+│   │           └── role_filter_chips.dart
+│   ├── auth/   ← TV1 · UC01–UC04
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   ├── auth_local_datasource.dart
+│   │   │   │   └── auth_remote_datasource.dart
+│   │   │   ├── models/
+│   │   │   │   └── login_response_model.dart
+│   │   │   └── repositories/
+│   │   │       └── auth_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── repositories/
+│   │   │   │   └── auth_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── forgot_password.dart
+│   │   │       ├── get_current_user.dart
+│   │   │       ├── login.dart
+│   │   │       ├── logout.dart
+│   │   │       ├── register.dart
+│   │   │       └── reset_password.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   ├── auth_provider.dart
+│   │       │   ├── forgot_password_provider.dart
+│   │       │   └── register_provider.dart
+│   │       ├── screens/
+│   │       │   ├── forgot_password_screen.dart
+│   │       │   ├── login_screen.dart
+│   │       │   └── register_screen.dart
+│   │       └── widgets/
+│   │           ├── otp_input.dart
+│   │           └── password_field.dart
+│   ├── bookmark/   ← TV5 · UC23
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── bookmark_remote_datasource.dart
+│   │   │   └── repositories/
+│   │   │       └── bookmark_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── repositories/
+│   │   │   │   └── bookmark_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── add_bookmark.dart
+│   │   │       ├── get_bookmarks.dart
+│   │   │       └── remove_bookmark.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   └── bookmark_provider.dart
+│   │       ├── screens/
+│   │       │   └── bookmark_screen.dart
+│   │       └── widgets/
+│   │           └── bookmark_button.dart
+│   ├── category/   ← TV3 · UC17
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── category_remote_datasource.dart
+│   │   │   └── repositories/
+│   │   │       └── category_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── repositories/
+│   │   │   │   └── category_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── create_category.dart
+│   │   │       ├── delete_category.dart
+│   │   │       ├── get_categories.dart
+│   │   │       ├── reorder_categories.dart
+│   │   │       ├── toggle_category.dart
+│   │   │       └── update_category.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   ├── category_management_provider.dart
+│   │       │   └── category_provider.dart
+│   │       ├── screens/
+│   │       │   ├── category_form_screen.dart
+│   │       │   └── category_management_tab.dart
+│   │       └── widgets/
+│   │           └── category_tile.dart
+│   ├── comment/   ← TV5 · UC22, UC24
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── comment_remote_datasource.dart
+│   │   │   ├── models/
+│   │   │   │   └── comment_model.dart
+│   │   │   └── repositories/
+│   │   │       └── comment_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── entities/
+│   │   │   │   └── comment.dart
+│   │   │   ├── repositories/
+│   │   │   │   └── comment_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── add_comment.dart
+│   │   │       ├── delete_comment.dart
+│   │   │       ├── get_comments.dart
+│   │   │       ├── get_moderation_comments.dart
+│   │   │       ├── hide_comment.dart
+│   │   │       └── unhide_comment.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   ├── comment_moderation_provider.dart
+│   │       │   └── comment_provider.dart
+│   │       ├── screens/
+│   │       │   ├── comment_moderation_tab.dart
+│   │       │   └── comment_screen.dart
+│   │       └── widgets/
+│   │           ├── comment_input.dart
+│   │           ├── comment_item.dart
+│   │           └── hide_comment_dialog.dart
+│   ├── content_management/   ← TV3 · UC16
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── content_management_remote_datasource.dart
+│   │   │   └── repositories/
+│   │   │       └── content_management_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── repositories/
+│   │   │   │   └── content_management_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── get_managed_articles.dart
+│   │   │       ├── set_featured.dart
+│   │   │       └── unpublish_article.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   └── managed_articles_provider.dart
+│   │       ├── screens/
+│   │       │   ├── content_management_screen.dart
+│   │       │   └── managed_articles_tab.dart
+│   │       └── widgets/
+│   │           ├── managed_article_tile.dart
+│   │           └── unpublish_dialog.dart
+│   ├── home/   ← TV4 · UC18
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   └── home_provider.dart
+│   │       ├── screens/
+│   │       │   └── home_screen.dart
+│   │       └── widgets/
+│   │           ├── category_tab_bar.dart
+│   │           ├── featured_carousel.dart
+│   │           └── latest_news_list.dart
+│   ├── my_articles/   ← TV2 · UC07–UC12
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── my_articles_remote_datasource.dart
+│   │   │   ├── models/
+│   │   │   │   └── review_history_model.dart
+│   │   │   └── repositories/
+│   │   │       └── my_articles_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── entities/
+│   │   │   │   └── review_history.dart
+│   │   │   ├── repositories/
+│   │   │   │   └── my_articles_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── create_article.dart
+│   │   │       ├── delete_article.dart
+│   │   │       ├── get_my_article_by_id.dart
+│   │   │       ├── get_my_articles.dart
+│   │   │       ├── get_review_history.dart
+│   │   │       ├── restore_article.dart
+│   │   │       ├── submit_article.dart
+│   │   │       ├── update_article.dart
+│   │   │       └── upload_thumbnail.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   ├── article_editor_provider.dart
+│   │       │   ├── article_history_provider.dart
+│   │       │   └── my_articles_provider.dart
+│   │       ├── screens/
+│   │       │   ├── article_editor_screen.dart
+│   │       │   ├── article_history_screen.dart
+│   │       │   └── my_articles_screen.dart
+│   │       └── widgets/
+│   │           ├── my_article_tile.dart
+│   │           ├── review_timeline.dart
+│   │           ├── status_tab_bar.dart
+│   │           └── thumbnail_picker.dart
+│   ├── news/   ← TV4 · UC19, UC20
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── news_remote_datasource.dart
+│   │   │   └── repositories/
+│   │   │       └── news_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── repositories/
+│   │   │   │   └── news_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── get_article_detail.dart
+│   │   │       ├── get_featured_articles.dart
+│   │   │       └── get_published_articles.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   ├── article_detail_provider.dart
+│   │       │   └── category_articles_provider.dart
+│   │       ├── screens/
+│   │       │   ├── article_detail_screen.dart
+│   │       │   └── category_articles_screen.dart
+│   │       └── widgets/
+│   │           ├── article_body.dart
+│   │           ├── article_header.dart
+│   │           └── comment_bar.dart
+│   ├── notification/   ← TV5 · UC25
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── notification_remote_datasource.dart
+│   │   │   ├── models/
+│   │   │   │   └── app_notification_model.dart
+│   │   │   └── repositories/
+│   │   │       └── notification_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── entities/
+│   │   │   │   └── app_notification.dart
+│   │   │   ├── repositories/
+│   │   │   │   └── notification_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── get_notifications.dart
+│   │   │       ├── get_unread_count.dart
+│   │   │       ├── mark_all_as_read.dart
+│   │   │       └── mark_as_read.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   └── notification_provider.dart
+│   │       ├── screens/
+│   │       │   └── notification_screen.dart
+│   │       └── widgets/
+│   │           ├── notification_badge.dart
+│   │           └── notification_tile.dart
+│   ├── profile/   ← TV1 · UC03–UC05
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── profile_remote_datasource.dart
+│   │   │   └── repositories/
+│   │   │       └── profile_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── repositories/
+│   │   │   │   └── profile_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── change_password.dart
+│   │   │       ├── get_profile.dart
+│   │   │       └── update_profile.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   └── profile_provider.dart
+│   │       ├── screens/
+│   │       │   ├── change_password_screen.dart
+│   │       │   ├── edit_profile_screen.dart
+│   │       │   └── profile_screen.dart
+│   │       └── widgets/
+│   │           ├── profile_header.dart
+│   │           └── profile_menu_item.dart
+│   ├── review/   ← TV3 · UC13–UC15
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   └── review_remote_datasource.dart
+│   │   │   └── repositories/
+│   │   │       └── review_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── repositories/
+│   │   │   │   └── review_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── approve_article.dart
+│   │   │       ├── get_article_for_review.dart
+│   │   │       ├── get_pending_articles.dart
+│   │   │       └── reject_article.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   ├── review_detail_provider.dart
+│   │       │   └── review_queue_provider.dart
+│   │       ├── screens/
+│   │       │   ├── review_detail_screen.dart
+│   │       │   └── review_queue_screen.dart
+│   │       └── widgets/
+│   │           ├── approve_dialog.dart
+│   │           ├── reject_dialog.dart
+│   │           └── review_action_bar.dart
+│   ├── search/   ← TV4 · UC21
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   ├── search_local_datasource.dart
+│   │   │   │   └── search_remote_datasource.dart
+│   │   │   └── repositories/
+│   │   │       └── search_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── repositories/
+│   │   │   │   └── search_repository.dart
+│   │   │   └── usecases/
+│   │   │       ├── clear_search_history.dart
+│   │   │       ├── get_search_history.dart
+│   │   │       ├── save_keyword.dart
+│   │   │       └── search_articles.dart
+│   │   └── presentation/
+│   │       ├── providers/
+│   │       │   └── search_provider.dart
+│   │       ├── screens/
+│   │       │   └── search_screen.dart
+│   │       └── widgets/
+│   │           ├── search_bar_field.dart
+│   │           ├── search_filter_chips.dart
+│   │           └── search_history_list.dart
+│   └── statistics/   ← TV5 · UC26
+│       ├── data/
+│       │   ├── datasources/
+│       │   │   └── statistics_remote_datasource.dart
+│       │   ├── models/
+│       │   │   └── statistics_overview_model.dart
+│       │   └── repositories/
+│       │       └── statistics_repository_impl.dart
+│       ├── domain/
+│       │   ├── entities/
+│       │   │   └── statistics_overview.dart
+│       │   ├── repositories/
+│       │   │   └── statistics_repository.dart
+│       │   └── usecases/
+│       │       └── get_overview.dart
+│       └── presentation/
+│           ├── providers/
+│           │   └── statistics_provider.dart
+│           ├── screens/
+│           │   └── statistics_screen.dart
+│           └── widgets/
+│               ├── category_bar_chart.dart
+│               ├── stat_tile.dart
+│               └── top_articles_list.dart
+├── shared/   ← TV1 (khung) – entity dùng chung
+│   ├── data/
+│   │   └── models/
+│   │       ├── app_user_model.dart
+│   │       ├── article_model.dart
+│   │       └── category_model.dart
+│   └── domain/
+│       └── entities/
+│           ├── app_user.dart
+│           ├── article.dart
+│           ├── category.dart
+│           └── paged_result.dart
+└── main.dart
+
+test/
+├── core/
+│   └── utils/
+│       ├── date_formatter_test.dart
+│       └── validators_test.dart
+└── features/
+    ├── auth/
+    │   └── presentation/
+    │       └── login_screen_test.dart
+    ├── comment/
+    │   └── comment_provider_test.dart
+    ├── my_articles/
+    │   ├── article_editor_provider_test.dart
+    │   └── article_editor_screen_test.dart
+    ├── review/
+    │   └── review_detail_provider_test.dart
+    └── search/
+        └── search_provider_test.dart
